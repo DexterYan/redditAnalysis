@@ -1,7 +1,7 @@
 var React = require('react-native');
 var { Icon, } = require('react-native-icons');
 var api = require('../Utils/Api');
-var Dashboard = require('./Dashboard');
+var HourlyDashboard = require('./HourlyDashboard');
 
 var {
     View,
@@ -93,9 +93,10 @@ class Main extends React.Component{
                     isLoading: false
                 })
                 this.props.navigator.push({
-                    title: 'Reddit Analytic',
-                    component: Dashboard,
-                    passProps: {analytic: res}
+                    title: this.state.subreddit,
+                    component: HourlyDashboard,
+                    backButtonTitle: 'Back',
+                    passProps: {analytic: res, title: this.state.subreddit}
                 })
             })
     }
